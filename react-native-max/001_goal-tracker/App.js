@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-      <View style={styles.container}>
-        <Text>Hello, null_ong2</Text>
-        <StatusBar style="auto" />
-      </View>
+    <View style={styles.container}>
+      <Text>Hello World!!!!</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
