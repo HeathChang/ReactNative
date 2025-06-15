@@ -1,7 +1,10 @@
-import { TextInput, View, Alert } from "react-native";
+import { Alert, TextInput, View } from "react-native";
 import PrimaryButton from "../components/common/Button/PrimaryButton";
 import { startGameStyle as styles } from "./StartGameScreen.style";
 import { useState } from "react";
+import Title from "../components/ui/Title/Title";
+import Card from "../components/common/Card/Card";
+import InstructionText from "../components/ui/Text/InstructionText";
 
 const StartGameScreen = (props) => {
 	const [enteredNumber, setEnteredNumber] = useState('');
@@ -30,25 +33,29 @@ const StartGameScreen = (props) => {
 				]);
 			return;
 		}
-		props.onPickNumber(chosenNumber)
+		props.onPickNumber(chosenNumber);
 	};
 
 
 	return (
-		<View style={ styles.inputContainer }>
-			<TextInput style={ styles.numberInput } maxLength={ 2 } keyboardType={ 'number-pad' }
-								 autoCapitalize={ 'none' } autoCorrect={ false } value={ enteredNumber }
-								 onChangeText={ numberInputHandler }/>
+		<View style={ styles.rootContainer }>
+			<Title>Guess My Number</Title>
+			<Card>
+				<InstructionText>Enter a Number.</InstructionText>
+				<TextInput style={ styles.numberInput } maxLength={ 2 } keyboardType={ 'number-pad' }
+									 autoCapitalize={ 'none' } autoCorrect={ false } value={ enteredNumber }
+									 onChangeText={ numberInputHandler }/>
 
 
-			<View style={ styles.buttonsContainer }>
-				<View style={ styles.buttonContainer }>
-					<PrimaryButton onPress={ resetInputHandler }>RESET</PrimaryButton>
+				<View style={ styles.buttonsContainer }>
+					<View style={ styles.buttonContainer }>
+						<PrimaryButton onPress={ resetInputHandler }>RESET</PrimaryButton>
+					</View>
+					<View style={ styles.buttonContainer }>
+						<PrimaryButton onPress={ confirmInputHandler }>CONFIRM</PrimaryButton>
+					</View>
 				</View>
-				<View style={ styles.buttonContainer }>
-					<PrimaryButton onPress={ confirmInputHandler }>CONFIRM</PrimaryButton>
-				</View>
-			</View>
+			</Card>
 		</View>
 	);
 };

@@ -1,10 +1,34 @@
 import { StyleSheet } from 'react-native';
+import Colors from "../constants/colors";
 
 export const gameOverStyle = StyleSheet.create({
-	container: {
+	rootContainer: {
 		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
+		padding: 24,
 		justifyContent: 'center',
+		alignItems: 'center'
 	},
+	imageContainer: {
+		width: 300,
+		height: 300,
+		borderRadius: 150,
+		borderWidth: 3,
+		borderColor: Colors.primary800,
+		overflow: 'hidden',
+		marginVertical: 36,
+	},
+	image: {
+		width: '100%',
+		height: '100%',
+	},
+	summaryText: {
+		fontFamily: 'open-sans',
+		fontSize: 24,
+		textAlign: 'center',
+		marginBottom: 24
+	},
+	highlight: {
+		fontFamily: 'open-sans-bold',
+		color: Colors.primary500
+	}
 });

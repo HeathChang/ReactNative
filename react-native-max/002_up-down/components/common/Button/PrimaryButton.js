@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { primaryButtonStyle as styles } from "./PrimaryButton.style";
 import Colors from "../../../constants/colors";
 

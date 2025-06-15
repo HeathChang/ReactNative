@@ -3,10 +3,15 @@ import Colors from "../constants/colors";
 import colors from "../constants/colors";
 
 export const startGameStyle = StyleSheet.create({
+	rootContainer: {
+		flex: 1,
+		marginTop: 100,
+		alignItems: "center"
+	},
 	inputContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: 100,
+		marginTop: 36,
 		marginHorizontal: 24,
 		padding: 16,
 		backgroundColor: Colors.primary800,
@@ -17,6 +22,7 @@ export const startGameStyle = StyleSheet.create({
 		shadowRadius: 6,
 		shadowOpacity: 0.25,
 	},
+
 	numberInput: {
 		height: 50,
 		width: 50,
@@ -34,5 +40,6 @@ export const startGameStyle = StyleSheet.create({
 	},
 	buttonContainer: {
 		flex: 1,
-	}
+	},
+
 });
