@@ -3,7 +3,7 @@ import { cardStyle as styles } from "./Card.style";
 
 const Card = (props) => {
 	return (
-		<View style={ styles.inputContainer }>{ props.children }</View>
+		<View style={ styles.cardContainer }>{ props.children }</View>
 	);
 };
 

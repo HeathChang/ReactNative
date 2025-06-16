@@ -1,11 +1,18 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import Colors from "../constants/colors";
 import colors from "../constants/colors";
 
+
+// const deviceHeight = Dimensions.get("window").height;
+
+
 export const startGameStyle = StyleSheet.create({
+	screen: {
+		flex: 1,
+	},
 	rootContainer: {
 		flex: 1,
-		marginTop: 100,
+		// marginTop: deviceHeight < 300 ? 30 : 100,
 		alignItems: "center"
 	},
 	inputContainer: {

@@ -1,7 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import Colors from "../constants/colors";
 
+
+const deviceWidth = Dimensions.get("window").width;
+
+
 export const gameOverStyle = StyleSheet.create({
+	screen: {
+		flex: 1
+	},
 	rootContainer: {
 		flex: 1,
 		padding: 24,
@@ -9,13 +16,13 @@ export const gameOverStyle = StyleSheet.create({
 		alignItems: 'center'
 	},
 	imageContainer: {
-		width: 300,
-		height: 300,
-		borderRadius: 150,
+		// width: deviceWidth < 380 ? 150: 300,
+		// height: deviceWidth < 380 ? 150: 300,
+		// borderRadius: deviceWidth < 380 ? 75: 150,
 		borderWidth: 3,
 		borderColor: Colors.primary800,
 		overflow: 'hidden',
-		marginVertical: 36,
+		margin: 36,
 	},
 	image: {
 		width: '100%',

@@ -1,5 +1,7 @@
-import { Text, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
 import { numberContainerStyle as styles } from "./NumberContainer.style";
+
+
 
 const NumberContainer = (props) => {
 	return (
