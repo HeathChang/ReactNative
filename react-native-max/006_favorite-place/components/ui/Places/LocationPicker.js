@@ -2,16 +2,42 @@ import { Alert, Image, StyleSheet, View, Text } from "react-native";
 import OutlineButton from "../../common/Button/OutlineButton";
 import { Colors } from "../../../constants/colors";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
-import { useState } from "react";
-import { getMapPreview } from "../../../util/location";
-import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
+import { getAddress, getMapPreview } from "../../../util/location";
+import { useNavigation, useRoute, useIsFocused } from "@react-navigation/native";
 
 
-const LocationPicker = () => {
+const LocationPicker = ({ onPickLocation }) => {
 	const [pickedLocation, setPickedLocation] = useState(null);
-	const navigation = useNavigation();
 	const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
+	const navigation = useNavigation();
+	const route = useRoute();
+	const isFocused = useIsFocused();
 
+
+	useEffect(() => {
+		if (isFocused && route.params) {
+			setPickedLocation({
+				lat: route.params.pickedLocation.latitude,
+				lng: route.params.pickedLocation.longitude
+			});
+		}
+
+	}, [route, isFocused]);
+
+	useEffect(() => {
+		const handleLocation  = async () => {
+			if(pickedLocation){
+				const address =  await getAddress(pickedLocation.lat, pickedLocation.lng)
+				onPickLocation({...pickedLocation, address: address});
+			}
+		}
+		handleLocation();
+
+	}, [pickedLocation, onPickLocation]);
+
+
+	// const  mapPickedLocation = route.params ? {lat: route.params.}
 	const verifyPermissions = async () => {
 		if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
 			const permissionResponse = await requestPermission();
@@ -37,8 +63,9 @@ const LocationPicker = () => {
 	};
 
 	const pickOnMapHandler = () => {
-		console.log(1, 'pickOnMapHandler')
+		console.log(1, 'pickOnMapHandler');
 		navigation.navigate('Map');
+
 	};
 
 	let locationPreview = <Text>NO Place</Text>;
