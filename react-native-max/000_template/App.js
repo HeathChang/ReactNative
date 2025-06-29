@@ -185,7 +185,7 @@ function DrawerNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <DrawerNavigator />s
+      <DrawerNavigator />
     </NavigationContainer>
   );
 }
